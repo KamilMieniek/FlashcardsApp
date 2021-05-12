@@ -1,0 +1,29 @@
+{
+    "name": "flashcardsnode",
+    "version": "1.0.0",
+    "description": "flashcardsapp",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KamilMieniek/FlashcardsApp.git"
+    },
+    "author": "Kamil Mieniek",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KamilMieniek/FlashcardsApp/issues"
+    },
+    "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongodb": "^3.6.6",
+        "mongoose": "^5.12.8",
+        "node-fetch": "^2.6.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
+}

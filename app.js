@@ -1,0 +1,1 @@
+const mg = require("./db/mongoose.js");
