@@ -21,12 +21,18 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
-const control = require("./controllers/api/UserController.js");
+const UserControls = require("./controllers/api/UserController.js");
 const DeckControls = require("./controllers/api/DeckController.js");
 
-app.get("/users", control.find);
-// app.get("/users/create", UserControls.create);
-// app.get("/users/:username", UserControls.find);
-// app.get("/users/:username/decks", UserControls.getAllDecks);
+app.get("/users", UserControls.all);
+app.post("/users/create", UserControls.create);
+app.get("/users/:username", UserControls.find);
+app.get("/users/:username/decks", UserControls.getAllDecks);
 
-// app.get("/decks", DeckControls);
+app.get("/decks", DeckControls.all);
+app.get("/register", (req, res) => {
+    res.sendFile(__dirname + "/front/index.html");
+});
+app.listen(port, () => {
+    console.log(`Node listening on port ${port}`);
+});

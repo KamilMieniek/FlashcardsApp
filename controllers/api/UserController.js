@@ -1,5 +1,5 @@
 let UserModel = require("../../db/models/UserModel");
-const UserController = {
+let UserController = {
     find: async(req, res) => {
         let found = await UserModel.findOne({ name: req.params.username });
         res.json(found);
@@ -9,6 +9,7 @@ const UserController = {
         res.json(allUsers);
     },
     create: async(req, res) => {
+        console.log(req.body);
         let newUser = new UserModel(req.body);
         let savedUser = await newUser.save();
         res.json(savedUser);

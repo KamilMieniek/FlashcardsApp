@@ -12,3 +12,5 @@ let DeckController = {
         res.json(savedDeck);
     },
 };
+
+module.exports = DeckController;
