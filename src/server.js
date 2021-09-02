@@ -1,12 +1,23 @@
-const http = require('http');
-const {app} = require('./app');
+const https = require('https');
+const app = require('./app');
+const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
+//TODO: ssl sie zjebalo
+const options = {
+  key: fs.readFileSync(path.join(__dirname, '..', 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, '..', 'cert.pem')),
+};
 
+const PORT = process.env.PORT;
 
-const PORT = process.env.PORT 
+const server = https.createServer(options, app);
 
-const server = http.createServer(app)
+function startServer() {
+  // mongoConnect();
+  app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}...`);
+  });
+}
 
-server.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-})
+startServer();
