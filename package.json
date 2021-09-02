@@ -2,10 +2,10 @@
     "name": "flashcardsnode",
     "version": "1.0.0",
     "description": "flashcardsapp",
-    "main": "index.js",
+    "main": "./src/server.js",
     "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon app.js"
+        "dev": "nodemon app.js",
+        "start": "node ./src/server.js"
     },
     "repository": {
         "type": "git",
@@ -18,13 +18,12 @@
     },
     "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme",
     "dependencies": {
-        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
         "express": "^4.17.1",
-        "mongodb": "^3.6.6",
-        "mongoose": "^5.12.8",
-        "node-fetch": "^2.6.1"
+        "mongoose": "^6.0.4",
+        "morgan": "^1.10.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7"
+        "nodemon": "^2.0.12"
     }
 }
