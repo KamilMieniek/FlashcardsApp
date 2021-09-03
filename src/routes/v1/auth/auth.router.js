@@ -30,6 +30,17 @@ passport.use(
   )
 );
 
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  // User.findById(id, function(err, user) {
+  //   done(err, user);
+  // });
+  done(null, id);
+});
+
 function checkLoggedIn(req, res, next) {
   const isLoggedIn = true;
   if (!isLoggedIn) {
@@ -46,7 +57,7 @@ authRouter.get('/secret', checkLoggedIn, (req, res) => {
 
 authRouter.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['profile'] })
+  passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
 authRouter.get(
@@ -56,9 +67,7 @@ authRouter.get(
     successRedirect: '/',
     session: true,
   }),
-  (req, res) => {
-    console.log('Google called us back!0 \\*__*/');
-  }
+  (req, res) => {}
 );
 
 authRouter.get('/auth/logout', (req, res) => {});
