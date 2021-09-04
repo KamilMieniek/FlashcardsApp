@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-require('dotenv').config();
+const User = require('../../../models/users.model');
 
 const authRouter = express();
 
@@ -19,13 +19,12 @@ passport.use(
       clientSecret: config.CLIENT_SECRET,
       callbackURL: config.callbackURL,
     },
-    function (accessToken, refreshToken, user, cb) {
-      console.log('google profile', user);
-      return cb(null, user);
+    async function (accessToken, refreshToken, profile, done) {
+      console.log('google profile', profile);
 
-      //   User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      //     return cb(err, user);
-      //   });
+      const user = await User.findOrCreateUser(profile.id);
+      if (!user) done(new Error());
+      done(null, user);
     }
   )
 );
@@ -70,9 +69,11 @@ authRouter.get(
   (req, res) => {}
 );
 
-authRouter.get('/auth/logout', (req, res) => {});
+authRouter.get('/auth/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = {
   authRouter,
-  checkLoggedIn,
 };

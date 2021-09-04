@@ -1,11 +1,9 @@
+require('dotenv').config();
 const https = require('https');
+const { mongoConnect } = require('./services/mongo');
 const { app } = require('./app');
 const path = require('path');
 const fs = require('fs');
-
-require('dotenv').config();
-
-// const options =;
 
 const PORT = process.env.PORT;
 
@@ -18,7 +16,7 @@ const server = https.createServer(
 );
 
 function startServer() {
-  // mongoConnect();
+  mongoConnect();
   server.listen(PORT, () => {
     console.log(`listening on port ${PORT}...`);
   });

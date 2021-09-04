@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
 
-const { authRouter, checkLoggedIn } = require('./routes/v1/auth/auth.router');
+const { authRouter } = require('./routes/v1/auth/auth.router');
 const app = express();
 
 //MIDDLEWARE
