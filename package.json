@@ -1,32 +1,33 @@
 {
-    "name": "flashcardsnode",
-    "version": "1.0.0",
-    "description": "flashcardsapp",
-    "main": "./src/server.js",
-    "scripts": {
-        "dev": "nodemon app.js",
-        "start": "node ./src/server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/KamilMieniek/FlashcardsApp.git"
-    },
-    "author": "Kamil Mieniek",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/KamilMieniek/FlashcardsApp/issues"
-    },
-    "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme",
-    "dependencies": {
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
-        "helmet": "^4.6.0",
-        "mongoose": "^6.0.4",
-        "morgan": "^1.10.0",
-        "passport": "^0.4.1",
-        "passport-google-oauth20": "^2.0.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.12"
-    }
+  "name": "flashcardsnode",
+  "version": "1.0.0",
+  "description": "flashcardsapp",
+  "main": "./src/server.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamilMieniek/FlashcardsApp.git"
+  },
+  "author": "Kamil Mieniek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KamilMieniek/FlashcardsApp/issues"
+  },
+  "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "mongoose": "^6.0.4",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }

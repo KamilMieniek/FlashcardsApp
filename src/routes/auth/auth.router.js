@@ -1,8 +1,9 @@
 const fs = require('fs');
 const express = require('express');
 const passport = require('passport');
+const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const User = require('../../../models/users.model');
+const User = require('../../models/users.model');
 
 const authRouter = express();
 
@@ -29,15 +30,31 @@ passport.use(
   )
 );
 
+authRouter.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true },
+  })
+);
+
+authRouter.use(passport.session());
+
 passport.serializeUser(function (user, done) {
+  console.log('Serialize User');
   done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
-  // User.findById(id, function(err, user) {
-  //   done(err, user);
-  // });
-  done(null, id);
+passport.deserializeUser(async function (id, done) {
+  console.log('Deserialize User');
+  const user = await User.findUserById(id);
+  if (!user) {
+    console.log('nie ma uzytkownika');
+    done(null, false);
+  }
+  console.log('jest uzytkownik uzytkownika');
+  done(null, user);
 });
 
 function checkLoggedIn(req, res, next) {
@@ -51,7 +68,7 @@ function checkLoggedIn(req, res, next) {
 }
 
 authRouter.get('/secret', checkLoggedIn, (req, res) => {
-  return res.send('Personal');
+  return res.send('Personal' + req.user);
 });
 
 authRouter.get(
@@ -63,17 +80,25 @@ authRouter.get(
   '/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/failure',
-    successRedirect: '/',
+    successRedirect: '/success',
     session: true,
   }),
   (req, res) => {}
 );
 
 authRouter.get('/auth/logout', (req, res) => {
-  req.logout();
+  req.logOut();
   res.redirect('/');
 });
 
+authRouter.get('/auth/logout', (req, res) => {
+  req.logOut();
+  res.redirect('/');
+});
+
+authRouter.get('/success', (req, res) => {
+  res.send(req.user);
+});
 module.exports = {
   authRouter,
 };
