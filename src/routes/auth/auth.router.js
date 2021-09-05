@@ -21,10 +21,8 @@ passport.use(
       callbackURL: config.callbackURL,
     },
     async function (accessToken, refreshToken, profile, done) {
-      console.log('google profile', profile);
-
       const user = await User.findOrCreateUser(profile.id);
-      if (!user) done(new Error());
+      if (!user) done(new Error({ message: 'Google oauth error' }));
       done(null, user);
     }
   )
@@ -38,17 +36,16 @@ authRouter.use(
     cookie: { secure: true },
   })
 );
-
+authRouter.use(passport.initialize());
 authRouter.use(passport.session());
-
 passport.serializeUser(function (user, done) {
   console.log('Serialize User');
-  done(null, user.id);
+  done(null, { _id: user._id });
 });
 
-passport.deserializeUser(async function (id, done) {
+passport.deserializeUser(function (id, done) {
   console.log('Deserialize User');
-  const user = await User.findUserById(id);
+  const user = User.findUserById(id);
   if (!user) {
     console.log('nie ma uzytkownika');
     done(null, false);
@@ -58,8 +55,7 @@ passport.deserializeUser(async function (id, done) {
 });
 
 function checkLoggedIn(req, res, next) {
-  const isLoggedIn = true;
-  if (!isLoggedIn) {
+  if (!req.user) {
     return res.status(401).json({
       error: 'you must log in',
     });
@@ -68,7 +64,8 @@ function checkLoggedIn(req, res, next) {
 }
 
 authRouter.get('/secret', checkLoggedIn, (req, res) => {
-  return res.send('Personal' + req.user);
+  console.log(req.session);
+  return res.send('Personal' + req.session.id);
 });
 
 authRouter.get(
@@ -80,7 +77,7 @@ authRouter.get(
   '/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/failure',
-    successRedirect: '/success',
+    successRedirect: '/',
     session: true,
   }),
   (req, res) => {}
@@ -91,12 +88,8 @@ authRouter.get('/auth/logout', (req, res) => {
   res.redirect('/');
 });
 
-authRouter.get('/auth/logout', (req, res) => {
-  req.logOut();
-  res.redirect('/');
-});
-
 authRouter.get('/success', (req, res) => {
+  // req.logIn();
   res.send(req.user);
 });
 module.exports = {
