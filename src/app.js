@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
-const { authRouter } = require('./routes/auth/auth.router');
+const { authRouter } = require('./Auth/auth.router');
 const app = express();
 
 //MIDDLEWARE
