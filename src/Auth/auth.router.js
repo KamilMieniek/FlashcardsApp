@@ -99,4 +99,5 @@ authRouter.get('/success', (req, res) => {
 });
 module.exports = {
   authRouter,
+  checkLoggedIn,
 };

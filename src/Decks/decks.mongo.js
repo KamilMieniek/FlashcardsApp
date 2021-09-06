@@ -15,6 +15,10 @@ const deckSchema = Schema({
     required: true,
   },
   cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }],
+  creationDate: {
+    type: Date,
+    required: true,
+  },
   public: {
     type: Boolean,
     default: true,
@@ -22,3 +26,5 @@ const deckSchema = Schema({
 });
 
 const Deck = mongoose.model('Deck', deckSchema);
+
+module.exports = Deck;
