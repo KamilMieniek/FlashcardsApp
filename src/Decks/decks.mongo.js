@@ -14,7 +14,7 @@ const deckSchema = Schema({
     ref: 'User',
     required: true,
   },
-  cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }],
+  cards: {}, //TODO
   creationDate: {
     type: Date,
     required: true,

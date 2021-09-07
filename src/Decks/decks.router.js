@@ -2,6 +2,7 @@ const { checkLoggedIn } = require('../Auth/auth.router');
 const {
   httpGetAllPublicDecks,
   httpGetUsersDecks,
+  httpDeleteDeck,
 } = require('./decks.controller');
 const express = require('express');
 
@@ -15,8 +16,6 @@ decksRouter.post('/decks', (req, res) => {
   //TODO:
 });
 
-decksRouter.delete('/decks/:id', checkLoggedIn, isOwner, (req, res) => {
-  //TODO isOwner not implemented
-});
+decksRouter.delete('/decks/:id', checkLoggedIn, httpDeleteDeck);
 
 module.exports = decksRouter;

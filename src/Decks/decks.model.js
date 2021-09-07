@@ -11,6 +11,13 @@ async function getAllPublicDecks(skip, limit) {
     .limit(limit);
 }
 
+async function isOwner(deckId, userId) {
+  return await decksDataBase.find({
+    _id: deckId,
+    author: userId,
+  });
+}
+
 async function getUsersDecks(userId, skip, limit) {
   return await decksDataBase
     .find(

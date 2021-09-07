@@ -25,7 +25,18 @@ async function httpGetUsersDecks(req, res) {
   return res.status(200).json(decks);
 }
 
+async function httpDeleteDeck(req, res) {
+  //TODO isOwner not implemented
+  const permission = await isOwner(req.params.id, req.user.id);
+  if (!permission) {
+    return res.status(405).json({
+      message: 'You have no power here',
+    });
+  }
+}
+
 module.exports = {
   httpGetAllPublicDecks,
   httpGetUsersDecks,
+  httpDeleteDeck,
 };

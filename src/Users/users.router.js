@@ -3,4 +3,4 @@ const { app } = require('../app');
 
 const usersRouter = express();
 
-usersRouter.get();
+usersRouter.get('/profile/:id', (req, res) => {});
