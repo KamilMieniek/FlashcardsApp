@@ -7,8 +7,12 @@ const deckSchema = Schema({
     type: String,
     required: true,
   },
+  back: {
+    type: String,
+    required: true,
+  },
 });
 
-const Deck = mongoose.model('Deck', deckSchema);
+const Card = mongoose.model('Card', cardSchema);
 
-module.exports = Deck;
+module.exports = Card;
