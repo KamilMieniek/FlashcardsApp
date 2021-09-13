@@ -26,7 +26,6 @@ async function httpGetUsersDecks(req, res) {
 }
 
 async function httpDeleteDeck(req, res) {
-  //TODO isOwner not implemented
   const permission = await isOwner(req.params.id, req.user.id);
   if (!permission) {
     return res.status(405).json({
@@ -35,8 +34,24 @@ async function httpDeleteDeck(req, res) {
   }
 }
 
+const testObject = {
+  title: 'test',
+  description: 'tralalala',
+  cards: [
+    { front: 'jajko', back: 'egg' },
+    { front: 'krzeslo', back: 'chair' },
+  ],
+};
+function httpCreateDeck(req, res) {
+  const newDeck = testObject;
+  // newDeck.authorID = req.user._id
+  // newDeck.authorID = req.user._id;
+  req.body();
+}
+
 module.exports = {
   httpGetAllPublicDecks,
   httpGetUsersDecks,
   httpDeleteDeck,
+  httpCreateDeck,
 };

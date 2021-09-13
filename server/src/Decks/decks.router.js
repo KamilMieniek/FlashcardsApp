@@ -1,8 +1,9 @@
-const { checkLoggedIn } = require('../Auth/auth.router');
+const { ensureAuth, ensureGuest } = require('../Auth/auth.router');
 const {
   httpGetAllPublicDecks,
   httpGetUsersDecks,
   httpDeleteDeck,
+  httpCreateDeck,
 } = require('./decks.controller');
 const express = require('express');
 
@@ -10,12 +11,10 @@ const decksRouter = express();
 
 decksRouter.get('/public/decks', httpGetAllPublicDecks);
 
-decksRouter.get('/user/decks', checkLoggedIn, httpGetUsersDecks);
+decksRouter.get('/user/decks', httpGetUsersDecks);
 
-decksRouter.post('/decks', (req, res) => {
-  //TODO:
-});
+decksRouter.post('/decks', httpCreateDeck);
 
-decksRouter.delete('/decks/:id', checkLoggedIn, httpDeleteDeck);
+decksRouter.delete('/decks/:id', httpDeleteDeck);
 
 module.exports = { decksRouter };
