@@ -82,6 +82,7 @@ typings/
 
 # ssl
 
+.pem
 \*.pem
 
 # Output of 'npm pack'
