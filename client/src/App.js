@@ -1,5 +1,5 @@
-import React from 'react';
-import FormComp from './components/flashcardform/form.component';
+import React from "react";
+import FormComp from "./components/flash-card-form/form.component";
 const App = () => {
   return (
     // <div style={{background : "blue"}}>
