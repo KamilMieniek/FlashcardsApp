@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import FlashCard from "./flash-card/flash-card.component";
@@ -15,7 +15,7 @@ const FormComp = (props) => {
 
   const takeData = (e, elID) => {
     let updatedList = data.flashCards.map((el, id) => {
-      if (id == elID) {
+      if (id === elID) {
         return { ...el, [e.target.name]: e.target.value };
       }
       return el;
@@ -65,7 +65,6 @@ const FormComp = (props) => {
         {data.flashCards.length === 0
           ? null
           : data.flashCards.map((el, id) => {
-              console.log(id, "map id");
               return (
                 <FlashCard
                   key={id}
