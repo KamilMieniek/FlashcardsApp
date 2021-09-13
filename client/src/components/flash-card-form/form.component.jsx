@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import FlashCard from "./flash-card/flash-card.component";
 
@@ -30,7 +31,11 @@ const FormComp = (props) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    console.log(data);
+    axios({
+      method: "post",
+      url: "/decks",
+      data: data,
+    });
   };
 
   const addMoreCards = () => {
