@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-import FlashCard from "./flash-card/flash-card.component";
+import FlashCard from './flash-card/flash-card.component';
 
 const FormComp = (props) => {
   const [data, setData] = useState({
-    deckTitle: "",
-    deckDescription: "",
+    deckTitle: '',
+    deckDescription: '',
     flashCards: [
-      { frontTitle: "", backTitle: "" },
-      { frontTitle: "", backTitle: "" },
+      { frontTitle: '', backTitle: '' },
+      { frontTitle: '', backTitle: '' },
     ],
   });
 
@@ -28,20 +28,28 @@ const FormComp = (props) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-
+    // const x = await axios.post('https://localhost:8000/decks', data);
+    // console.log(x.data.json);
     axios({
-      method: "post",
-      url: "/decks",
+      method: 'post',
+      url: 'https://localhost:8000/decks',
       data: data,
-    });
+      headers: { 'content-type': 'application/json' },
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .then(() => {
+        console.log(data);
+      });
   };
 
   const addMoreCards = () => {
     setData({
       ...data,
-      flashCards: [...data.flashCards, { frontTitle: "", backTitle: "" }],
+      flashCards: [...data.flashCards, { frontTitle: '', backTitle: '' }],
     });
   };
   return (

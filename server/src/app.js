@@ -1,5 +1,6 @@
 const passport = require('passport');
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
@@ -10,7 +11,12 @@ const { decksRouter } = require('./Decks/decks.router');
 
 //MIDDLEWARE
 app.use(helmet());
-app.use(morgan('tiny'));
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+  })
+);
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 

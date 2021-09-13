@@ -43,10 +43,12 @@ const testObject = {
   ],
 };
 function httpCreateDeck(req, res) {
-  const newDeck = testObject;
+  const newDeck = req.body;
+
+  console.log(newDeck);
+  res.status(200).json(req.body);
   // newDeck.authorID = req.user._id
   // newDeck.authorID = req.user._id;
-  req.body();
 }
 
 module.exports = {

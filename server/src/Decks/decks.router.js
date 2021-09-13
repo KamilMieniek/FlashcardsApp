@@ -12,8 +12,11 @@ const decksRouter = express();
 decksRouter.get('/public/decks', httpGetAllPublicDecks);
 
 decksRouter.get('/user/decks', httpGetUsersDecks);
-
-decksRouter.post('/decks', httpCreateDeck);
+// httpCreateDeck
+decksRouter.post('/decks', (req, res) => {
+  console.log(req.body);
+  res.json(req.body);
+});
 
 decksRouter.delete('/decks/:id', httpDeleteDeck);
 
