@@ -54,19 +54,14 @@ passport.deserializeUser(async function (id, done) {
   done(null, user);
 });
 
-function checkLoggedIn(req, res, next) {
-  if (!req.user) {
-    return res.status(401).json({
-      error: 'you must log in',
-    });
-  }
-  next();
-}
-
-authRouter.get('/secret', checkLoggedIn, (req, res) => {
-  console.log(req.session);
-  return res.send('Personal' + JSON.stringify(req.session.passport));
-});
+// function checkLoggedIn(req, res, next) {
+//   if (!req.user) {
+//     return res.status(401).json({
+//       error: 'you must log in',
+//     });
+//   }
+//   next();
+// }
 
 authRouter.get('/failure', (req, res) => {
   console.log(req.session);
@@ -116,7 +111,6 @@ function ensureGuest(req, res, next) {
 
 module.exports = {
   authRouter,
-  checkLoggedIn,
   ensureAuth,
   ensureGuest,
 };
