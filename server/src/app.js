@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 const { authRouter } = require('./Auth/auth.router');
-const { decksRoute } = require('./Decks/decks.router');
+const { decksRouter } = require('./Decks/decks.router');
 
 //MIDDLEWARE
 app.use(helmet());
@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 //ROUTERS
 app.use(authRouter);
-app.use(decksRoute);
+app.use(decksRouter);
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });

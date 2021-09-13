@@ -18,4 +18,4 @@ decksRouter.post('/decks', (req, res) => {
 
 decksRouter.delete('/decks/:id', checkLoggedIn, httpDeleteDeck);
 
-module.exports = decksRouter;
+module.exports = { decksRouter };

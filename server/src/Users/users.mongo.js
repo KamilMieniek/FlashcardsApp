@@ -18,12 +18,6 @@ const userSchema = Schema({
     type: String,
     require: true,
   },
-  decks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Deck',
-    },
-  ],
 });
 
 const User = mongoose.model('User', userSchema);
