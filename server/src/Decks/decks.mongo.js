@@ -14,10 +14,7 @@ const deckSchema = Schema({
     ref: 'User',
     required: true,
   },
-  cards: {
-    type: Schema.Types.ObjectId,
-    ref: 'Card',
-  },
+  flashCards: [{ frontTitle: String, backTitle: String }],
   creationDate: {
     type: Date,
     required: true,

@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-server": "cross-env cd server && npm install",
+    "install-client": "cross-env cd client && npm install",
+    "install": "cross-env npm run install-server && npm run install-client",
+    "start-server": " cross-env npm run watch --prefix server",
+    "start-client": " cross-env npm start --prefix client",
+    "watch": "cross-env npm-run-all -p start-server start-client ",
+    "test": "cross-env npm test --prefix client && npm test --prefix server",
+    "deploy": "cross-env npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "cross-env npm run build --prefix client && npm run cluster --prefix server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/KamilMieniek/FlashcardsApp/issues"
   },
-  "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme"
+  "homepage": "https://github.com/KamilMieniek/FlashcardsApp#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
 }

@@ -5,8 +5,8 @@ import FlashCard from './flash-card/flash-card.component';
 
 const FormComp = (props) => {
   const [data, setData] = useState({
-    deckTitle: '',
-    deckDescription: '',
+    title: '',
+    description: '',
     flashCards: [
       { frontTitle: '', backTitle: '' },
       { frontTitle: '', backTitle: '' },

@@ -3,7 +3,7 @@ const {
   httpGetAllPublicDecks,
   httpGetUsersDecks,
   httpDeleteDeck,
-  httpCreateDeck,
+  httpCreateNewDeck,
 } = require('./decks.controller');
 const express = require('express');
 
@@ -13,10 +13,7 @@ decksRouter.get('/public/decks', httpGetAllPublicDecks);
 
 decksRouter.get('/user/decks', httpGetUsersDecks);
 // httpCreateDeck
-decksRouter.post('/decks', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
-});
+decksRouter.post('/decks', httpCreateNewDeck);
 
 decksRouter.delete('/decks/:id', httpDeleteDeck);
 

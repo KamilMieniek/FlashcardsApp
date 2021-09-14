@@ -31,7 +31,13 @@ async function getUsersDecks(userId, skip, limit) {
     .limit(limit);
 }
 
+async function CreateNewDeck(deck) {
+  console.log(deck);
+  return await decksDataBase.create(deck);
+}
+
 module.exports = {
   getAllPublicDecks,
   getUsersDecks,
+  CreateNewDeck,
 };

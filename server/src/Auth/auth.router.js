@@ -70,6 +70,7 @@ authRouter.get('/failure', (req, res) => {
 
 authRouter.get(
   '/auth/google',
+  ensureGuest,
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
@@ -88,11 +89,6 @@ authRouter.get('/auth/logout', (req, res) => {
   res.redirect('/');
 });
 
-authRouter.get('/success', (req, res) => {
-  // req.logIn();
-  res.send(req.user);
-});
-
 function ensureAuth(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -103,7 +99,7 @@ function ensureAuth(req, res, next) {
 
 function ensureGuest(req, res, next) {
   if (req.isAuthenticated()) {
-    res.redirect('/dashboard');
+    res.redirect('/');
   } else {
     return next();
   }
