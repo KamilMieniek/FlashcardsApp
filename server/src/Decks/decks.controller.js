@@ -57,13 +57,14 @@ async function httpDeleteDeck(req, res) {
 
 function httpCreateNewDeck(req, res) {
   try {
+    console.log(JSON.stringify(req.body));
     const newDeck = req.body;
     if (!newDeck) {
       res.status(404).json({ message: 'Bad request' });
     }
     // //TODO: Validation,  login on front,
     // newDeck = Object.assign({ author: req.user._id }, req.body);
-    CreateNewDeck(newDeck);
+    //  CreateNewDeck(newDeck);
     res.status(201).json({ ok: true });
   } catch (err) {
     console.error(err);

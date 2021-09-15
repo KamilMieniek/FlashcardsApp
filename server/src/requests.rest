@@ -1,0 +1,13 @@
+GET https://localhost:8000/
+
+
+### 
+
+POST https://localhost:8000/decks
+content-type: application/json
+
+{
+    "title" : "SampleTitle",
+    "description" : "Sample description",
+    "flashCards" : [{"frontTitle" :"krzeslo", "backTitle":"chair"},]
+}

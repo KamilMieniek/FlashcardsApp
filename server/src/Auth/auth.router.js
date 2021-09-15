@@ -1,4 +1,3 @@
-const fs = require('fs');
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
@@ -64,7 +63,6 @@ passport.deserializeUser(async function (id, done) {
 // }
 
 authRouter.get('/failure', (req, res) => {
-  console.log(req.session);
   return res.send('Failure');
 });
 

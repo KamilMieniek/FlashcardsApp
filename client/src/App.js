@@ -4,9 +4,6 @@ const App = () => {
   return (
     <div>
       <FormComp />
-      <a href="/auth/google"></a>
-
-      <a href="/auth/logout"></a>
     </div>
   );
 };
