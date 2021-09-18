@@ -53,15 +53,6 @@ passport.deserializeUser(async function (id, done) {
   done(null, user);
 });
 
-// function checkLoggedIn(req, res, next) {
-//   if (!req.user) {
-//     return res.status(401).json({
-//       error: 'you must log in',
-//     });
-//   }
-//   next();
-// }
-
 authRouter.get('/failure', (req, res) => {
   return res.send('Failure');
 });

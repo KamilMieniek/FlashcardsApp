@@ -33,6 +33,11 @@ async function getUsersDecks(userId, skip, limit) {
 
 async function CreateNewDeck(deck) {
   console.log(deck);
+  Object.assign(deck, {
+    public: true,
+    creationDate: Date.now(),
+  });
+
   return await decksDataBase.create(deck);
 }
 

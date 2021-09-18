@@ -1,14 +1,18 @@
 const { getPagination } = require('../Db/query');
-const { getAllPublicDecks, getUsersDecks } = require('./decks.model');
+const {
+  getAllPublicDecks,
+  getUsersDecks,
+  CreateNewDeck,
+} = require('./decks.model');
 
-const testObject = {
-  deckTitle: 'zestaw1',
-  deckDescription: 'opis zestawu',
-  flashCards: [
-    { frontTitle: 'front1', backTitle: 'back1' },
-    { frontTitle: 'front2', backTitle: 'back2' },
-  ],
-};
+// const testObject = {
+//   deckTitle: 'zestaw1',
+//   deckDescription: 'opis zestawu',
+//   flashCards: [
+//     { frontTitle: 'front1', backTitle: 'back1' },
+//     { frontTitle: 'front2', backTitle: 'back2' },
+//   ],
+// };
 
 async function httpGetAllPublicDecks(req, res) {
   try {
@@ -64,14 +68,11 @@ function httpCreateNewDeck(req, res) {
     }
     // //TODO: Validation,  login on front,
     // newDeck = Object.assign({ author: req.user._id }, req.body);
-    //  CreateNewDeck(newDeck);
+    CreateNewDeck(newDeck);
     res.status(201).json({ ok: true });
   } catch (err) {
     console.error(err);
   }
-
-  // newDeck.authorID = req.user._id
-  // newDeck.authorID = req.user._id;
 }
 
 module.exports = {

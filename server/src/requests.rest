@@ -9,5 +9,5 @@ content-type: application/json
 {
     "title" : "SampleTitle",
     "description" : "Sample description",
-    "flashCards" : [{"frontTitle" :"krzeslo", "backTitle":"chair"},]
+    "flashCards" : [{"frontTitle" :"krzeslo", "backTitle":"chair"}]
 }

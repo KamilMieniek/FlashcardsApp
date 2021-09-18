@@ -5,14 +5,12 @@ const deckSchema = Schema({
   _id: Schema.Types.ObjectId,
   title: {
     type: String,
-    required: true,
   },
   description: { type: String },
 
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
   },
   flashCards: [{ frontTitle: String, backTitle: String }],
   creationDate: {
