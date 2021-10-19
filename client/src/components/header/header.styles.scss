@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 24px;
+  position: relative;
+
+  &-left,
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &-left {
+    flex-grow: 1;
+  }
+
+  &-right button {
+    margin-left: 10px;
+  }
+}
+.app-icon {
+  width: 26px;
+  height: 2px;
+  border-radius: 4px;
+  background-color: var(--main-color);
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--main-color);
+    left: 50%;
+    transform: translatex(-50%);
+  }
+
+  &:before {
+    top: -6px;
+  }
+  &:after {
+    bottom: -6px;
+  }
+}
+.app-name {
+  color: var(--main-color);
+  margin: 0;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0 32px;
+}
