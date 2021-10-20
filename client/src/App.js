@@ -10,7 +10,6 @@ const App = () => {
       <Switch>
         <Route exact path="/page/form" component={FormComp} />
       </Switch>
-      <p>gunwoo</p>
     </div>
   );
 };
