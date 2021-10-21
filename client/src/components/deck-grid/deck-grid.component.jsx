@@ -72,6 +72,9 @@ const DeckGrid = () => {
         <DeckBox title="English B1" cardsCount="645" progress="70%" />
         <DeckBox title="English B2" cardsCount="433" progress="53%" />
         <DeckBox title="English C1" cardsCount="156" progress="31%" />
+        <DeckBox title="English A1" cardsCount="533" progress="99%" />
+        <DeckBox title="English B1" cardsCount="645" progress="70%" />
+        <DeckBox title="English B2" cardsCount="433" progress="53%" />
       </div>
     </div>
   );
