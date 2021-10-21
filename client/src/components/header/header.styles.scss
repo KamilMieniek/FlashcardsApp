@@ -20,32 +20,7 @@
     margin-left: 10px;
   }
 }
-.app-icon {
-  width: 26px;
-  height: 2px;
-  border-radius: 4px;
-  background-color: var(--main-color);
-  position: relative;
 
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 2px;
-    border-radius: 4px;
-    background-color: var(--main-color);
-    left: 50%;
-    transform: translatex(-50%);
-  }
-
-  &:before {
-    top: -6px;
-  }
-  &:after {
-    bottom: -6px;
-  }
-}
 .app-name {
   color: var(--main-color);
   margin: 0;
@@ -66,7 +41,16 @@
   align-items: center;
   justify-content: center;
 }
-
+.notification-btn {
+  color: var(--main-color);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .profile-btn {
   padding: 0;
   border: 0;
@@ -89,5 +73,31 @@
     font-size: 16px;
     line-height: 24px;
     font-weight: 700;
+  }
+}
+.app-icon {
+  width: 26px;
+  height: 2px;
+  border-radius: 4px;
+  background-color: var(--main-color);
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 2px;
+    border-radius: 4px;
+    background-color: var(--main-color);
+    left: 50%;
+    transform: translatex(-50%);
+  }
+
+  &:before {
+    top: -6px;
+  }
+  &:after {
+    bottom: -6px;
   }
 }
